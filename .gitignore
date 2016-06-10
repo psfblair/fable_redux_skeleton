@@ -44,4 +44,7 @@ Thumbs.db
 paket.exe
 
 # Fable
-node_modules
+node_modules/
+
+# Brunch
+public/
