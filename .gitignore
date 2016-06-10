@@ -6,7 +6,7 @@
 [Bb]in/
 packages/
 TestResults/
-build/
+build/temp
 
 # globs
 Makefile.in
@@ -42,9 +42,6 @@ Thumbs.db
 
 # FSharp
 paket.exe
-
-# Fable
-node_modules/
 
 # Brunch
 public/
