@@ -22,6 +22,7 @@
     <Optimize>false</Optimize>
     <Tailcalls />
     <OutputPath>build\dist</OutputPath>
+    <BaseIntermediateOutputPath>build\temp</BaseIntermediateOutputPath>
     <CompilationConstants />
     <WarningLevel />
     <PlatformTarget />
@@ -34,6 +35,7 @@
     <Optimize>true</Optimize>
     <Tailcalls />
     <OutputPath>build\dist</OutputPath>
+    <BaseIntermediateOutputPath>build\temp</BaseIntermediateOutputPath>
     <CompilationConstants />
     <WarningLevel />
     <PlatformTarget />
@@ -46,6 +48,7 @@
     <Optimize />
     <Tailcalls />
     <OutputPath>build\dist</OutputPath>
+    <BaseIntermediateOutputPath>build\temp</BaseIntermediateOutputPath>
     <CompilationConstants />
     <WarningLevel />
     <PlatformTarget />
@@ -65,7 +68,7 @@
   <ItemGroup />
   <ItemGroup>
     <Compile Include="node_modules/fable-import-react/Fable.Import.React.fs" />
-    <Compile Include="fable-import-react/Fable.Helpers.React.fs" />
+    <Compile Include="node_modules/fable-import-react/Fable.Helpers.React.fs" />
     <Compile Include="node_modules/fable-import-react-router/Fable.Import.HistoryModule.fs" />
     <Compile Include="node_modules/fable-import-react-router/Fable.Import.ReactRouter.fs" />
     <Compile Include="node_modules/fable-import-redux/Fable.Import.Redux.fs" />

@@ -5,6 +5,6 @@
     "outDir": "build/dist",
     "babelPlugins": ["transform-runtime"],
     "scripts": {
-        "prebuild": "cp node_modules/fable-import-react/Fable.Helpers.React.fs fable-import-react/"
+        "postbuild": "cp node_modules/fable-import-react/package.json build/dist/node_modules/fable-import-react/"
     }
 }
