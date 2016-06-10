@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Name />
+    <AssemblyName>fable_redux_skeleton</AssemblyName>
+    <RootNamespace>fable_redux_skeleton</RootNamespace>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion />
+    <ProjectGuid>af90d9ae-f7af-4b2f-8b5d-953542c2aa89</ProjectGuid>
+    <ProjectType />
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects />
+    <TargetFSharpCoreVersion />
+    <DocumentationFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>false</Optimize>
+    <Tailcalls />
+    <OutputPath>build</OutputPath>
+    <BaseIntermediateOutputPath>build\temp</BaseIntermediateOutputPath>
+    <CompilationConstants />
+    <WarningLevel />
+    <PlatformTarget />
+    <Prefer32Bit />
+    <OtherFlags />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>true</Optimize>
+    <Tailcalls />
+    <OutputPath>build</OutputPath>
+    <BaseIntermediateOutputPath>build\temp</BaseIntermediateOutputPath>
+    <CompilationConstants />
+    <WarningLevel />
+    <PlatformTarget />
+    <Prefer32Bit />
+    <OtherFlags />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(VisualStudioVersion)' == '10.0' OR '$(VisualStudioVersion)' == '11.0'">
+    <DebugSymbols />
+    <DebugType />
+    <Optimize />
+    <Tailcalls />
+    <OutputPath>build</OutputPath>
+    <BaseIntermediateOutputPath>build\temp</BaseIntermediateOutputPath>
+    <CompilationConstants />
+    <WarningLevel />
+    <PlatformTarget />
+    <Prefer32Bit />
+    <OtherFlags />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="FSharp.Core" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="Fable.Core">
+      <HintPath>node_modules\fable-core\Fable.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="node_modules/fable-import-react/Fable.Import.React.fs" />
+    <Compile Include="node_modules/fable-import-react/Fable.Helpers.React.fs" />
+    <Compile Include="node_modules/fable-import-react-router/Fable.Import.HistoryModule.fs" />
+    <Compile Include="node_modules/fable-import-react-router/Fable.Import.ReactRouter.fs" />
+    <Compile Include="node_modules/fable-import-redux/Fable.Import.Redux.fs" />
+    <Compile Include="node_modules/fable-import-react-redux/Fable.Import.ReactRedux.fs" />
+    <Compile Include="node_modules/fable-import-react-router-redux/Fable.Import.ReactRouterRedux.fs" />
+    <Compile Include="app/Utilities.fs" />
+    <Compile Include="app/Components.fs" />
+    <Compile Include="app/ActionCreators.fs" />
+    <Compile Include="app/Reducers.fs" />
+    <Compile Include="app/Initialize.fs" />
+  </ItemGroup>
+  <Import Project="$(FSharpTargetsPath)" Condition="Exists('$(FSharpTargetsPath)')" />
+</Project>

@@ -1,0 +1,10 @@
+{
+    "sourceMaps": true,
+    "projFile": "fable_redux_skeleton.fsproj",
+    "outDir": "build",
+    "targets": {
+        "production": {
+            "prebuild": "npm install"
+        }
+    }
+}
