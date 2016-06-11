@@ -7,7 +7,6 @@ exports.config = {
       'app/assets', 
       'app/styles', 
       'build/dist', 
-      'fable-import-react',
       'test', 
       'vendor'
     ]

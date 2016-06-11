@@ -21,17 +21,9 @@ See the Fable and Brunch documentation for more build options.
 
 # Notes
 
-Fable will compile the source files as well as the `Fable.Helpers.React.fs` file
-in node_modules/fable-import-react. Interface declaration files don't get compiled
-to Javascript. However, the helper file is not simply an interface declaration file
-and so must be compiled and be part of the build output.
-
-Currently there is a workaround for an issue with brunch where the `Fable.Helpers.React`
-module isn't found because fable compiles it under a node_modules subdirectory of the
-build output directory. (See https://github.com/fsprojects/Fable/issues/188 and also
-https://github.com/brunch/brunch/issues/1395 .)
-
-The current workaround is to maintain another copy of `Fable.Helpers.React.fs` in a
-`fable-import-react` directory at the top level. Naturally this is not ideal and
-hopefully we'll have something better soon.
+Fable will compile into build/dist the F# source files as well as the `Fable.Helpers.React.fs` file 
+that lives in node_modules/fable-import-react. Interface declaration files (i.e., files whose  
+name starts with `Fable.Import` or `Fable.Core`) don't get compiled to Javascript by Fable. 
+However, the helper file is not simply an interface declaration file and so must be 
+compiled and be part of the build output.
 
