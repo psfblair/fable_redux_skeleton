@@ -68,15 +68,16 @@
   <ItemGroup />
   <ItemGroup>
     <Compile Include="node_modules/fable-import-react/Fable.Import.React.fs" />
-    <Compile Include="fable-import-react/Fable.Helpers.React.fs" />
     <Compile Include="node_modules/fable-import-react-router/Fable.Import.HistoryModule.fs" />
     <Compile Include="node_modules/fable-import-react-router/Fable.Import.ReactRouter.fs" />
     <Compile Include="node_modules/fable-import-redux/Fable.Import.Redux.fs" />
     <Compile Include="node_modules/fable-import-react-redux/Fable.Import.ReactRedux.fs" />
     <Compile Include="node_modules/fable-import-react-router-redux/Fable.Import.ReactRouterRedux.fs" />
+    <Compile Include="fable-import-react/Fable.Helpers.React.fs" />
+    <Compile Include="app/Types.fs" />
     <Compile Include="app/Utilities.fs" />
-    <Compile Include="app/Components.fs" />
     <Compile Include="app/ActionCreators.fs" />
+    <Compile Include="app/Components.fs" />
     <Compile Include="app/Reducers.fs" />
     <Compile Include="app/Initialize.fs" />
   </ItemGroup>

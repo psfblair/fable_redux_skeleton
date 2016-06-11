@@ -3,17 +3,15 @@ module Initialize
 open System
 open Fable.Core
 open Fable.Import
-module RR = Fable.Helpers.React
-
-open Utilities
-open Components
-open Reducers
-
+open Types
 module Redux = Fable.Import.Redux
 
-let store = Redux.Globals.createStore reducer
+let initialState: CounterState = 0
+let store = Redux.Globals.createStore(Reducers.reducer, initialState)
 
-let load() = ReactDom.render(Components.provider store, Browser.document.getElementById "app") |> ignore
+let load() = 
+    let provider = Components.provider store
+    ReactDom.render(provider, Browser.document.getElementById "app") |> ignore
 
 if Browser.document.readyState <> "complete" then
     let eventListener = Utilities.toBrowserEventHandler(fun _ -> load())

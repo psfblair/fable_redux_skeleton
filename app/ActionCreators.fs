@@ -1,7 +1,5 @@
 module ActionCreators
+open Types
 
-type ActionType = Increment | Decrement
-type Action = { Type' : ActionType }
-
-let increment state = { Type' = Increment }
-let decrement state = { Type' = Decrement }
+let increment _ = { ``type`` = Increment }
+let decrement _ = { ``type`` = Decrement }
