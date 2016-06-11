@@ -41,6 +41,6 @@ let counter props = R.com<Counter,CounterProps,CounterState> props []
 
 let provider store = 
     let props = Types.initialProps store
-    R.com<ReactRedux.Provider<CounterProps>,ReactRedux.Property<CounterProps>,obj> props [counter props]
+    R.com<ReactRedux.Provider<CounterState, CounterProps>,ReactRedux.Property<CounterProps>,CounterState> props [counter props]
 
 
