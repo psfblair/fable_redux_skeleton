@@ -3,7 +3,7 @@ module Initialize
 open System
 open Fable.Core
 open Fable.Import
-open Types
+open Props
 module Redux = Fable.Import.Redux
 
 let initialState: CounterState = 0

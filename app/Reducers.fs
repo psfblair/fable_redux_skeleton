@@ -2,7 +2,7 @@ module Reducers
 
 module Redux = Fable.Import.Redux
 open System
-open Types
+open ActionCreators
 
 (*
 NOTE: When a store is created, an "INIT" action is dispatched so that every

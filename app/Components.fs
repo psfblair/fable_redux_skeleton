@@ -6,41 +6,42 @@ open Fable.Import
 
 module React = Fable.Import.React
 module ReactRedux = Fable.Import.ReactRedux
-module R = Fable.Helpers.React
-open R.Props
+module Tag = Fable.Helpers.React
+module Attr = Tag.Props
 
-open Types
+open ActionCreators
+open Props
 
 // TODO How to do mixins: PureRenderMixin?
 // import PureRenderMixin from 'react-addons-pure-render-mixin'
 type Counter(props, ?state) =
-    inherit R.Component<CounterProps, CounterState>(props, ?state = state)
+    inherit Tag.Component<CounterProps, CounterState>(props, ?state = state)
 
     let labelFrom actionCreator = 
-        actionCreator().``type`` |> Types.toString
+        actionCreator().``type`` |> toString
     let dispatcherFrom actionCreator (_:React.MouseEvent) = 
         actionCreator () |> actionDispatcher props
     let createActionButton (actionLabel, dispatcher) =
-        R.button [ Key actionLabel
-                   OnClick dispatcher
-                 ] 
-                 [ R.h1 [] [unbox actionLabel]]
+        Tag.button [ Attr.Key actionLabel
+                     Attr.OnClick dispatcher
+                   ] 
+                   [ Tag.h1 [] [unbox actionLabel]]
 
     member self.render () =
         let buttons = 
             [ ActionCreators.increment; ActionCreators.decrement ]
             |> List.map (fun actionCreator -> (labelFrom actionCreator, dispatcherFrom actionCreator))
             |> List.map createActionButton
-        R.div 
-            [ ClassName "counter" ] 
-            [ R.h1 [ClassName "count"] [unbox (getState props) ] 
-              R.div [] buttons
+        Tag.div 
+            [ Attr.ClassName "counter" ] 
+            [ Tag.h1 [Attr.ClassName "count"] [unbox (getState props) ] 
+              Tag.div [] buttons
             ]
 
-let counter props = R.com<Counter,CounterProps,CounterState> props []
+let counter props = Tag.com<Counter,CounterProps,CounterState> props []
 
 let provider store = 
-    let props = Types.initialProps store
-    R.com<ReactRedux.Provider<CounterState, CounterProps>,ReactRedux.Property<CounterProps>,CounterState> props [counter props]
+    let props = Props.initialProps store
+    Tag.com<ReactRedux.Provider<CounterState, CounterProps>,ReactRedux.Property<CounterProps>,CounterState> props [counter props]
 
 
