@@ -10,17 +10,15 @@ module FsMap = FSharp.Collections.Map
 
 type CounterState = int
 
-type CounterProps(innerStore : Redux.Store option, maybeChildren : React.ReactElement<CounterProps> option) = 
-    member val store = innerStore
-    member val children = maybeChildren
+type CounterProps(maybeStore : Redux.Store option, maybeChildren : React.ReactElement<CounterProps> option) = 
     interface ReactRedux.Property<CounterProps> with 
-        member val store = innerStore
+        member val store = maybeStore
         member val children = maybeChildren
 
 let initialProps store = CounterProps(Some store, None)
 
 let getState (props: CounterProps) = 
-    match props.store with
+    match (props :> ReactRedux.Property<CounterProps>).store with
     | Some store -> store.getState()
     | None -> failwith "Cannot get state without a Redux store"
 
@@ -38,7 +36,7 @@ let toObj { ``type`` = actionType } =
     |> Fable.Core.Operators.createObj
 
 let actionDispatcher (props: CounterProps) action =
-    match props.store with
+    match (props :> ReactRedux.Property<CounterProps>).store with
     | None -> failwith "Cannot create action dispatcher without a Redux store"
     | Some store -> action
                     |> toObj
