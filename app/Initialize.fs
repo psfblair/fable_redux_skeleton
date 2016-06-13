@@ -6,8 +6,7 @@ open Fable.Import
 open Props
 module Redux = Fable.Import.Redux
 
-let initialState: CounterState = -1 
-let store = Redux.Globals.createStore(Reducers.reducer, initialState)
+let store = Redux.Globals.createStore(Reducers.reducer, Props.initialState)
 let initialProps = CounterProps(Some store, None)
 
 let load() = 

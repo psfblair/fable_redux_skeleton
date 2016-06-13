@@ -18,7 +18,7 @@ Bad.
 *)
 
 let inner = function
-    | (state, { ``type`` = Increment }) -> state + 1
-    | (state, { ``type`` = Decrement }) -> state - 1
+    | ({ count = state }, { ``type`` = Increment }) -> { count = state + 1 }
+    | ({ count = state }, { ``type`` = Decrement }) -> { count = state - 1 }
 
 let reducer = Func<CounterState,Action,CounterState>(fun state action -> inner (state, action))

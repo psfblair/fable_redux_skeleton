@@ -53,7 +53,15 @@ type Counter(props, ?state) =
 
 let counter props = Tag.com<Counter,CounterProps,CounterState> props []
 
+type StateMapper() =
+    interface ReactRedux.MapStateToProps with
+        member this.Invoke(state:obj, ?ownProps:obj) = state |> Tag.toPlainJsObj
+
+// Fails here -- the React type checker wants this to be of type object, but it's of type function.
+let counterContainer props =
+    let inner = counter props 
+    ReactRedux.Globals.connect(new StateMapper()).Invoke(inner) 
+
+type Provider = ReactRedux.Provider<CounterState, CounterProps>
 let provider props = 
-    Tag.com<ReactRedux.Provider<CounterState, CounterProps>,ReactRedux.Property<CounterProps>,CounterState> props [counter props]
-
-
+    Tag.com<Provider,ReactRedux.Property<CounterProps>,CounterState> props [counterContainer props]
