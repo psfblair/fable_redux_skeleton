@@ -6,11 +6,12 @@ open Fable.Import
 open Props
 module Redux = Fable.Import.Redux
 
-let initialState: CounterState = 0
+let initialState: CounterState = -1 
 let store = Redux.Globals.createStore(Reducers.reducer, initialState)
+let initialProps = CounterProps(Some store, None)
 
 let load() = 
-    let provider = Components.provider store
+    let provider = Components.provider initialProps
     ReactDom.render(provider, Browser.document.getElementById "app") |> ignore
 
 if Browser.document.readyState <> "complete" then

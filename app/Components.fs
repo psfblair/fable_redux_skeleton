@@ -17,15 +17,28 @@ open Props
 type Counter(props, ?state) =
     inherit Tag.Component<CounterProps, CounterState>(props, ?state = state)
 
-    let labelFrom actionCreator = 
-        actionCreator().``type`` |> toString
+    let labelFrom actionCreator =  actionCreator().``type`` |> toString
+    
     let dispatcherFrom actionCreator (_:React.MouseEvent) = 
-        actionCreator () |> actionDispatcher props
+        let actionDispatcher action = 
+            match (props :> ReactRedux.Property<CounterProps>).store with
+            | None -> failwith "Cannot create action dispatcher without a Redux store"
+            | Some store -> action
+                            |> toObj
+                            |> store.dispatch
+                            |> ignore
+        actionCreator () |> actionDispatcher
+
     let createActionButton (actionLabel, dispatcher) =
         Tag.button [ Attr.Key actionLabel
                      Attr.OnClick dispatcher
                    ] 
                    [ Tag.h1 [] [unbox actionLabel]]
+
+    let count =
+        match (props :> ReactRedux.Property<CounterProps>).store with
+        | Some store -> store.getState() |> unbox 
+        | None -> failwith "Cannot get state without a Redux store"
 
     member self.render () =
         let buttons = 
@@ -34,14 +47,13 @@ type Counter(props, ?state) =
             |> List.map createActionButton
         Tag.div 
             [ Attr.ClassName "counter" ] 
-            [ Tag.h1 [Attr.ClassName "count"] [unbox (getState props) ] 
+            [ Tag.h1 [Attr.ClassName "count"] [unbox (sprintf "Count: %d" count)] 
               Tag.div [] buttons
             ]
 
 let counter props = Tag.com<Counter,CounterProps,CounterState> props []
 
-let provider store = 
-    let props = Props.initialProps store
+let provider props = 
     Tag.com<ReactRedux.Provider<CounterState, CounterProps>,ReactRedux.Property<CounterProps>,CounterState> props [counter props]
 
 
