@@ -1,5 +1,16 @@
 # Brunch Skeleton for F#/Fable, React, Redux, and React-Router
 
+# NOTE: This skeleton is not yet viable!!
+
+Currently events that propagate state changes to the Redux reducer are not being propagated to cause
+re-rendering of React components, and it's unclear why. It's possible that using a synonym for int
+looks like mutable state to Redux, but wrapping the int in a union type didn't help.
+
+I don't plan on returning to this project to make it work, so if you'd like to use this skeleton
+be prepared to invest the time in getting it to work.
+
+-- PB
+
 # Setup
 
 * Clone this repository.
